@@ -89,7 +89,7 @@ public class ContentActivity extends BaseActivity {
         View view = navView.inflateHeaderView(R.layout.nav_header);
         TextView username = (TextView) view.findViewById(R.id.username);
         TextView studentid = (TextView) view.findViewById(R.id.studentid);
-        Bean user = BmobUser.getCurrentUser(ContentActivity.this,Bean.class);//获取自定义用户信息
+        Bean user = BmobUser.getCurrentUser(ContentActivity.this,Bean.class);
         username.setText(user.getUsername());
         studentid.setText(user.getName());
 
@@ -101,6 +101,7 @@ public class ContentActivity extends BaseActivity {
         listList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //待添加Item点击逻辑***************************************************************************
                 Toast.makeText(ContentActivity.this, "you clicked", Toast.LENGTH_SHORT).show();
             }
         });
@@ -150,7 +151,7 @@ public class ContentActivity extends BaseActivity {
                 Log.d(TAG, "onError: " + "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
             }
         });
-        swipeRefresh.setRefreshing(false);//关闭刷新动画
+        swipeRefresh.setRefreshing(false);
     }
 
 

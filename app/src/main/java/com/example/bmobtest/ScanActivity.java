@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 
@@ -46,6 +47,7 @@ public class ScanActivity extends AppCompatActivity {
             Bundle bundle = data.getExtras();
             String result = bundle.getString("result");
             scancontent.setText(result);
+            Toast.makeText(ScanActivity.this, "签到成功", Toast.LENGTH_SHORT).show();
         }
     }
 }
