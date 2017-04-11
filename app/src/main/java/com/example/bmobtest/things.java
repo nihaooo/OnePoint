@@ -2,9 +2,11 @@ package com.example.bmobtest;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,11 @@ public class things extends AppCompatActivity {
         setContentView(R.layout.things);
         Toolbar toolbar = (Toolbar) findViewById(R.id.things_toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar   != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_keyboard_arrow_left_white_24dp);
+        }
         et_title = (EditText) findViewById(R.id.et_title);
         et_phone = (EditText) findViewById(R.id.et_phone);
         et_describe = (EditText) findViewById(R.id.et_describe);
@@ -55,6 +62,15 @@ public class things extends AppCompatActivity {
                 });
             }
         });
-
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+        }
+        return true;
     }
 }
