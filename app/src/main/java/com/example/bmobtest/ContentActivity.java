@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -102,7 +101,7 @@ public class ContentActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //待添加Item点击逻辑***************************************************************************
-                Toast.makeText(ContentActivity.this, "you clicked", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ContentActivity.this, "you clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -122,8 +121,6 @@ public class ContentActivity extends BaseActivity {
             @Override
             public void onRefresh() {
                 refreshList();
-                Log.d(TAG, "onSuccess: " + "cccccccccccc下拉刷新监听器ccccccccccccccccccccccccccccccccccccccccc");
-                Log.d(TAG, "onSuccess: " + "cccccccccccc准备进入刷新逻辑ccccccccccccccccccccccccccccccccccccccc");
                 listList.setAdapter(mAdapter);
             }
         });
@@ -137,18 +134,14 @@ public class ContentActivity extends BaseActivity {
             public void onSuccess(List<Lost> list) {
                 mLostList.clear();
                 mLostList.addAll(list);//添加进数据源
-                Log.d(TAG, "onSuccess: " + "cccccccccccc添加进数据源ccccccccccccccccccccccccccccccccccccccccccc");
-                mAdapter = new LostAdapter(ContentActivity.this, mLostList);
-                Log.d(TAG, "onSuccess: " + "cccccccccccc添加进适配器ccccccccccccccccccccccccccccccccccccccccccc");
+//                mAdapter = new LostAdapter(ContentActivity.this, mLostList);
                 mAdapter.notifyDataSetChanged();
-                Log.d(TAG, "onSuccess: " + "cccccccccccc适配器改变ccccccccccccccccccccccccccccccccccccccccc");
                 Toast.makeText(ContentActivity.this, "刷新成功", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(int i, String s) {
                 Toast.makeText(ContentActivity.this, "刷新失败", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onError: " + "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
             }
         });
         swipeRefresh.setRefreshing(false);

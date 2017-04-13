@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -51,13 +50,11 @@ public class things extends AppCompatActivity {
                     public void onSuccess() {
                         Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
                         finish();
-                        Log.d(TAG, "onSuccess:" + "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx添加信息成功");
                     }
 
                     @Override
                     public void onFailure(int i, String s) {
                         Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "onSuccess:" + "ccccccccccccccccccccccccccccccccccccc添加信息失败");
                     }
                 });
             }
