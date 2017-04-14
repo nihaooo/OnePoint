@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">一点通</string>
     <string name="hint_name">学号</string>
-    <string name="name">昵称</string>
+    <string name="name">姓名</string>
     <string name="hint_password">密码</string>
     <string name="resign_in_button">Register</string>
-    <string name="prompt_id">学号</string>
-    <string name="prompt_password">密码</string>
+    <string name="prompt_id">     学号</string>
+    <string name="prompt_password">     密码</string>
     <string name="sign_in_button">Sign In</string>
 
 </resources>

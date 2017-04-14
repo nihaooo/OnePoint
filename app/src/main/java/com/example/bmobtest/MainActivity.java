@@ -42,25 +42,19 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-//        InputStream is = this.getResources().openRawResource(R.drawable.back_img);
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inJustDecodeBounds = false;
-//        options.inSampleSize = 10;
-//        Bitmap btp = BitmapFactory.decodeStream(is,null,options);
+
         mimageView = (ImageView) findViewById(R.id.back_image);
-//        imageView.setImageBitmap(btp);
         Glide.with(MainActivity.this)
-                .load(R.drawable.back_img)
+                .load(R.drawable.ground_img)
                 .into(mimageView);
 
 
-
-        Bean userInfo = BmobUser.getCurrentUser(MainActivity.this,Bean.class);
-        if (userInfo    != null){
-            Intent intent = new Intent(MainActivity.this,ContentActivity.class);
+        Bean userInfo = BmobUser.getCurrentUser(MainActivity.this, Bean.class);
+        if (userInfo != null) {
+            Intent intent = new Intent(MainActivity.this, ContentActivity.class);
             startActivity(intent);
             finish();
-        }else {
+        } else {
         }
 
 
@@ -68,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this,ContentActivity.class);
+                        Intent intent = new Intent(MainActivity.this, ContentActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -93,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(int i, String s) {
                         Toast.makeText(MainActivity.this, "登录失败,请检查网络及输入信息", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "onFailure: ddddddddddddddddddddddddddddddddddddddd"+bean.getObjectId());
+                        Log.d(TAG, "onFailure: ddddddddddddddddddddddddddddddddddddddd" + bean.getObjectId());
                     }
                 });
             }
