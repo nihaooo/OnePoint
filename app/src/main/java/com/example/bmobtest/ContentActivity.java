@@ -59,17 +59,14 @@ public class ContentActivity extends BaseActivity {
                 switch (id){
                     case R.id.nav_Profile :
                         //语句1
-                        Toast.makeText(ContentActivity.this, "home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_Change :
                         //语句2
-                        Toast.makeText(ContentActivity.this, "签到", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ContentActivity.this,ScanActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.nav_Settings :
                         //语句3
-                        Toast.makeText(ContentActivity.this, "设置", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_quite :
                         //语句4

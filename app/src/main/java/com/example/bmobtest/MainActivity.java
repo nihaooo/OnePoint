@@ -10,7 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AutoCompleteTextView et_name;
     private android.support.design.widget.TextInputEditText et_password;
+    private ImageView mimageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+
+//        InputStream is = this.getResources().openRawResource(R.drawable.back_img);
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = false;
+//        options.inSampleSize = 10;
+//        Bitmap btp = BitmapFactory.decodeStream(is,null,options);
+        mimageView = (ImageView) findViewById(R.id.back_image);
+//        imageView.setImageBitmap(btp);
+        Glide.with(MainActivity.this)
+                .load(R.drawable.back_img)
+                .into(mimageView);
+
+
 
         Bean userInfo = BmobUser.getCurrentUser(MainActivity.this,Bean.class);
         if (userInfo    != null){
