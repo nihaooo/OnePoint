@@ -21,7 +21,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class RegisterActivity extends Activity {
 
-    private EditText et_name,et_password,et_nicheng;
+    private EditText et_name,et_password,et_nicheng,et_banji;
     private static final String TAG = "RegisterActivity";
     private ImageView mimageView2;
 
@@ -46,27 +46,33 @@ public class RegisterActivity extends Activity {
         et_name = (EditText) findViewById(R.id.et_name);
         et_password = (EditText) findViewById(R.id.et_password);
         et_nicheng = (EditText) findViewById(R.id.et_nicheng);
+        et_banji = (EditText) findViewById(R.id.et_banji);
 
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Bean bean = new Bean();
-                bean.setName(et_nicheng.getText().toString());
-                bean.setUsername(et_name.getText().toString());
-                bean.setPassword(et_password.getText().toString());
-                bean.signUp(RegisterActivity.this, new SaveListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
+                if (et_nicheng.getText().toString().equals("")&&et_name.getText().toString().equals("")&&et_password.getText().toString().equals("")) {
+                    Toast.makeText(RegisterActivity.this, "输入信息不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    bean.setName(et_nicheng.getText().toString().trim());
+                    bean.setUsername(et_name.getText().toString().trim());
+                    bean.setPassword(et_password.getText().toString().trim());
+                    bean.signUp(RegisterActivity.this, new SaveListener() {
+                        @Override
+                        public void onSuccess() {
+                            Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
 
-                    @Override
-                    public void onFailure(int i, String s) {
-                        Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "onFailure: rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+bean.getObjectId());
-                    }
-                });
+                        @Override
+                        public void onFailure(int i, String s) {
+                            Toast.makeText(RegisterActivity.this, "注册失败，请检查网络或已重复注册", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "onFailure: rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+bean.getObjectId());
+                        }
+                    });
+                }
+
             }
         });
     }

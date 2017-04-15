@@ -73,23 +73,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Bean bean = new Bean();
-                bean.setUsername(et_name.getText().toString());
-                bean.setPassword(et_password.getText().toString());
-                bean.login(MainActivity.this, new SaveListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, ContentActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                if (et_name.getText().toString().equals("")&&et_password.getText().toString().equals("")) {
+                    Toast.makeText(MainActivity.this, "输入信息不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    bean.setUsername(et_name.getText().toString().trim());
+                    bean.setPassword(et_password.getText().toString().trim());
+                    bean.login(MainActivity.this, new SaveListener() {
+                        @Override
+                        public void onSuccess() {
+                            Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this, ContentActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
 
-                    @Override
-                    public void onFailure(int i, String s) {
-                        Toast.makeText(MainActivity.this, "登录失败,请检查网络及输入信息", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "onFailure: ddddddddddddddddddddddddddddddddddddddd" + bean.getObjectId());
-                    }
-                });
+                        @Override
+                        public void onFailure(int i, String s) {
+                            Toast.makeText(MainActivity.this, "登录失败,请检查网络及输入信息", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "onFailure: ddddddddddddddddddddddddddddddddddddddd" + bean.getObjectId());
+                        }
+                    });
+                }
             }
         });
     }

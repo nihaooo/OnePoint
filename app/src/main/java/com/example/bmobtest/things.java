@@ -55,21 +55,26 @@ public class things extends AppCompatActivity {
 
     private void sendinformation() {
         Lost lost = new Lost();
-        lost.setDescribe(et_describe.getText().toString());
-        lost.setPhone(et_phone.getText().toString());
-        lost.setTitle(et_title.getText().toString());
-        lost.save(things.this, new SaveListener() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
-                finish();
-            }
+        if (et_describe.getText().toString().equals("")&&et_phone.getText().toString().equals("")&&et_title.getText().toString().equals("")) {
+            Toast.makeText(this, "输入信息不能为空", Toast.LENGTH_SHORT).show();
+        }else {
+            lost.setDescribe(et_describe.getText().toString());
+            lost.setPhone(et_phone.getText().toString());
+            lost.setTitle(et_title.getText().toString());
+            lost.save(things.this, new SaveListener() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
-            @Override
-            public void onFailure(int i, String s) {
-                Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(int i, String s) {
+                    Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
     }
 
     @Override
