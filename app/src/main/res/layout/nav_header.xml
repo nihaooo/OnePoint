@@ -15,21 +15,23 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/studentid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="权倬瑞"
             android:textColor="#FFF"
             android:textSize="14sp"/>
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="2015022044"
             android:textColor="#FFF"
             android:textSize="14sp"/>
     </LinearLayout>

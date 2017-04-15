@@ -5,9 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,33 +31,13 @@ public class things extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar   != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.ic_keyboard_arrow_left_white_24dp);
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_arrow_back_white_24dp);
         }
         et_title = (EditText) findViewById(R.id.et_title);
         et_phone = (EditText) findViewById(R.id.et_phone);
         et_describe = (EditText) findViewById(R.id.et_describe);
-        Button mbutton = (Button) findViewById(R.id.btn_finish);
-        mbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Lost lost = new Lost();
-                lost.setDescribe(et_describe.getText().toString());
-                lost.setPhone(et_phone.getText().toString());
-                lost.setTitle(et_title.getText().toString());
-                lost.save(things.this, new SaveListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
 
-                    @Override
-                    public void onFailure(int i, String s) {
-                        Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -66,8 +45,36 @@ public class things extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.ok:
+                sendinformation();
+                break;
             default:
         }
+        return true;
+    }
+
+    private void sendinformation() {
+        Lost lost = new Lost();
+        lost.setDescribe(et_describe.getText().toString());
+        lost.setPhone(et_phone.getText().toString());
+        lost.setTitle(et_title.getText().toString());
+        lost.save(things.this, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbal,menu);
         return true;
     }
 }

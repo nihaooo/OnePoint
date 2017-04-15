@@ -29,7 +29,7 @@
             android:label="一点通">
         </activity>
         <activity android:name=".things"
-            android:label="添加失物信息">
+            android:label="失物信息">
         </activity>
         <activity android:name=".ScanActivity"></activity>
     </application>

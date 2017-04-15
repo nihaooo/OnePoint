@@ -84,6 +84,10 @@ public class ContentActivity extends BaseActivity {
         //对nav_header进行操作*****************************************************************************
         View view = navView.inflateHeaderView(R.layout.nav_header);
         TextView username = (TextView) view.findViewById(R.id.username);
+//        ImageView imageView = (ImageView) view.findViewById(R.id.nav_head_img);
+//        Glide.with(ContentActivity.this)
+//                .load(R.drawable.back_img3)
+//                .into(imageView);
         TextView studentid = (TextView) view.findViewById(R.id.studentid);
         Bean user = BmobUser.getCurrentUser(ContentActivity.this,Bean.class);
         username.setText(user.getUsername());
