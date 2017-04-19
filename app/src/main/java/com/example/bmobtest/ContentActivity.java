@@ -37,7 +37,6 @@ public class ContentActivity extends BaseActivity {
     private List<Lost> mLostList;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,23 +55,23 @@ public class ContentActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch (id){
-                    case R.id.nav_Profile :
+                switch (id) {
+                    case R.id.nav_Profile:
                         //语句1
                         break;
-                    case R.id.nav_Change :
+                    case R.id.nav_Change:
                         //语句2
-                        Intent intent = new Intent(ContentActivity.this,ScanActivity.class);
+                        Intent intent = new Intent(ContentActivity.this, ScanActivity.class);
                         startActivity(intent);
                         break;
-                    case R.id.nav_Settings :
+                    case R.id.nav_Settings:
                         //语句3
                         break;
-                    case R.id.nav_quite :
+                    case R.id.nav_quite:
                         //语句4
                         Toast.makeText(ContentActivity.this, "注销成功", Toast.LENGTH_SHORT).show();
                         BmobUser.logOut(ContentActivity.this);
-                        BmobUser current = BmobUser.getCurrentUser(ContentActivity.this,Bean.class);
+                        BmobUser current = BmobUser.getCurrentUser(ContentActivity.this, Bean.class);
                         ActivityCollector.finishAll();
                         android.os.Process.killProcess(android.os.Process.myPid());
                         break;
@@ -84,12 +83,12 @@ public class ContentActivity extends BaseActivity {
         //对nav_header进行操作*****************************************************************************
         View view = navView.inflateHeaderView(R.layout.nav_header);
         TextView username = (TextView) view.findViewById(R.id.username);
-//        ImageView imageView = (ImageView) view.findViewById(R.id.nav_head_img);
-//        Glide.with(ContentActivity.this)
-//                .load(R.drawable.back_img3)
-//                .into(imageView);
+        //        ImageView imageView = (ImageView) view.findViewById(R.id.nav_head_img);
+        //        Glide.with(ContentActivity.this)
+        //                .load(R.drawable.back_img3)
+        //                .into(imageView);
         TextView studentid = (TextView) view.findViewById(R.id.studentid);
-        Bean user = BmobUser.getCurrentUser(ContentActivity.this,Bean.class);
+        Bean user = BmobUser.getCurrentUser(ContentActivity.this, Bean.class);
         username.setText(user.getUsername());
         studentid.setText(user.getName());
 
@@ -102,11 +101,11 @@ public class ContentActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //待添加Item点击逻辑***************************************************************************
-//                Toast.makeText(ContentActivity.this, "you clicked", Toast.LENGTH_SHORT).show();
+                //                Toast.makeText(ContentActivity.this, "you clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
-
+        findfreshCache();//读取Cache data
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -127,15 +126,36 @@ public class ContentActivity extends BaseActivity {
         });
     }
 
-    private void refreshList() {
+
+
+
+
+    private void findfreshCache() {
         BmobQuery<Lost> query = new BmobQuery<Lost>();
-        query.order("-createdAt");
+        query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);
         query.findObjects(this, new FindListener<Lost>() {
             @Override
             public void onSuccess(List<Lost> list) {
                 mLostList.clear();
                 mLostList.addAll(list);//添加进数据源
-//                mAdapter = new LostAdapter(ContentActivity.this, mLostList);
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+            }
+        });
+    }
+
+    private void refreshList() {
+        BmobQuery<Lost> query = new BmobQuery<Lost>();
+        query.order("-createdAt");
+        query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.findObjects(this, new FindListener<Lost>() {
+            @Override
+            public void onSuccess(List<Lost> list) {
+                mLostList.clear();
+                mLostList.addAll(list);//添加进数据源
                 mAdapter.notifyDataSetChanged();
                 Toast.makeText(ContentActivity.this, "刷新成功", Toast.LENGTH_SHORT).show();
             }

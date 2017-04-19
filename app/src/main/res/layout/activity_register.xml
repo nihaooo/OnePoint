@@ -60,21 +60,7 @@
                     android:padding="15dp"/>
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="#FDFEFE">
 
-                <AutoCompleteTextView
-                    android:id="@+id/et_banji"
-                    android:drawableLeft="@mipmap/ic_perm_identity_white_24dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/classname"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:padding="15dp"/>
-            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

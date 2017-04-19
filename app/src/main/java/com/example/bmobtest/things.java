@@ -2,11 +2,11 @@ package com.example.bmobtest;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,32 +21,34 @@ public class things extends AppCompatActivity {
     private static final String TAG = "things";
 
     private EditText et_title, et_phone, et_describe;
+    private DatePicker dp_date;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.things);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.things_toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar   != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.ic_arrow_back_white_24dp);
-        }
         et_title = (EditText) findViewById(R.id.et_title);
         et_phone = (EditText) findViewById(R.id.et_phone);
         et_describe = (EditText) findViewById(R.id.et_describe);
+        dp_date = (DatePicker) findViewById(R.id.dp_date);
+
+        Button mButton = (Button) findViewById(R.id.button_add);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendinformation();
+            }
+        });
 
 
     }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                break;
-            case R.id.ok:
-                sendinformation();
                 break;
             default:
         }
@@ -55,31 +57,23 @@ public class things extends AppCompatActivity {
 
     private void sendinformation() {
         Lost lost = new Lost();
-        if (et_describe.getText().toString().equals("")&&et_phone.getText().toString().equals("")&&et_title.getText().toString().equals("")) {
-            Toast.makeText(this, "输入信息不能为空", Toast.LENGTH_SHORT).show();
-        }else {
-            lost.setDescribe(et_describe.getText().toString());
-            lost.setPhone(et_phone.getText().toString());
-            lost.setTitle(et_title.getText().toString());
-            lost.save(things.this, new SaveListener() {
-                @Override
-                public void onSuccess() {
-                    Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+        lost.setDescribe(et_describe.getText().toString());
+        lost.setPhone(et_phone.getText().toString());
+        lost.setTitle(et_title.getText().toString());
+        lost.setTime(dp_date.getYear() + "-" + (dp_date.getMonth() + 1) + "-" + dp_date.getDayOfMonth());
+        lost.save(things.this, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(things.this, "失物信息添加成功", Toast.LENGTH_SHORT).show();
+                finish();
+            }
 
-                @Override
-                public void onFailure(int i, String s) {
-                    Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(things.this, "失物信息添加失败", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbal,menu);
-        return true;
-    }
 }

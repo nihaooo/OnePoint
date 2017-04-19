@@ -13,18 +13,19 @@ import java.util.List;
  * Created by www10 on 2017/4/5.
  */
 
-public class LostAdapter extends BaseAdapter{
+public class LostAdapter extends BaseAdapter {
 
     private List<Lost> mList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private static final String TAG = "LostAdapter";
 
-    public LostAdapter(Context context,List<Lost> list){
+    public LostAdapter(Context context, List<Lost> list) {
         mContext = context;
         mList = list;
         mLayoutInflater = LayoutInflater.from(context);
     }
+
     @Override
     public int getCount() {
         return mList.size();
@@ -45,23 +46,27 @@ public class LostAdapter extends BaseAdapter{
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = mLayoutInflater.inflate(R.layout.list_item,null);
+            convertView = mLayoutInflater.inflate(R.layout.list_item, null);
             viewHolder.mTvLostTitle1 = (TextView) convertView.findViewById(R.id.tv_title1);
             viewHolder.mTvLostPhone1 = (TextView) convertView.findViewById(R.id.tv_phone1);
             viewHolder.mTvLostDescribe1 = (TextView) convertView.findViewById(R.id.tv_describe1);
+            viewHolder.mTvLostDate1 = (TextView) convertView.findViewById(R.id.send_time);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         Lost lost = mList.get(position);
         viewHolder.mTvLostTitle1.setText(lost.getTitle());
         viewHolder.mTvLostPhone1.setText(lost.getPhone());
         viewHolder.mTvLostDescribe1.setText(lost.getDescribe());
+        viewHolder.mTvLostDate1.setText(lost.getTime());
         return convertView;
     }
+
     public class ViewHolder {
-         public TextView mTvLostTitle1;
-         public TextView mTvLostPhone1;
-         public TextView mTvLostDescribe1;
+        public TextView mTvLostTitle1;
+        public TextView mTvLostPhone1;
+        public TextView mTvLostDescribe1;
+        public TextView mTvLostDate1;
     }
 }

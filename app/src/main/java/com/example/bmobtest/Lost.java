@@ -10,6 +10,7 @@ public class Lost extends BmobObject {
     private String title;//标题
     private String describe;//描述
     private String phone;//联系手机
+    private String time;
 
     public String getTitle() {
         return title;
@@ -33,5 +34,13 @@ public class Lost extends BmobObject {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
