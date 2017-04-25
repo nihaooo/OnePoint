@@ -64,6 +64,10 @@ public class ContentActivity extends BaseActivity {
                         Intent intent = new Intent(ContentActivity.this, ScanActivity.class);
                         startActivity(intent);
                         break;
+                    case R.id.nav_Map:
+                        //baidu Map
+                        Intent intent2 = new Intent(ContentActivity.this, MapActivity.class);
+                        startActivity(intent2);
                     case R.id.nav_Settings:
                         //语句3
                         break;
@@ -125,9 +129,6 @@ public class ContentActivity extends BaseActivity {
             }
         });
     }
-
-
-
 
 
     private void findfreshCache() {
