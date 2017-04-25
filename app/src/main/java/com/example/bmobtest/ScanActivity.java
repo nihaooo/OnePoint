@@ -67,8 +67,9 @@ public class ScanActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK){
             Bundle bundle = data.getExtras();
             String result = bundle.getString("result");
-            scancontent.setText(result);
+//            scancontent.setText(result);
             Bean user = BmobUser.getCurrentUser(ScanActivity.this,Bean.class);
+            scancontent.setText( "签到课程："+ result + "\n签到学生：" + user.getUsername());
             QRBean qrBean = new QRBean();
             qrBean.setStudentclass(result);
             qrBean.setStudentid(user.getUsername());
