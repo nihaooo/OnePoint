@@ -3,21 +3,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_Profile"
+            android:icon="@mipmap/ic_home_white_24dp"
             android:title="HOME"/>
         <item
             android:id="@+id/nav_Change"
+            android:icon="@mipmap/ic_pets_white_24dp"
             android:title="签到"/>
         <item
             android:id="@+id/nav_Map"
+            android:icon="@mipmap/ic_location_on_white_24dp"
             android:title="地图"/>
         <item
             android:id="@+id/nav_School"
+            android:icon="@mipmap/ic_looks_white_24dp"
             android:title="校园"/>
         <item
             android:id="@+id/nav_Settings"
+            android:icon="@mipmap/ic_build_white_24dp"
             android:title="设置"/>
         <item
             android:id="@+id/nav_quite"
+            android:icon="@mipmap/ic_power_settings_new_white_24dp"
             android:title="注销"/>
     </group>
 
