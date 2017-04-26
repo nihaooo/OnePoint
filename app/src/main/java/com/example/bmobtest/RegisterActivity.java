@@ -21,7 +21,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class RegisterActivity extends Activity {
 
-    private EditText et_name,et_password,et_nicheng;
+    private EditText et_name,et_password,et_nicheng,et_erjixueyuan,et_zhuanye,et_repassword;
     private static final String TAG = "RegisterActivity";
     private ImageView mimageView2;
 
@@ -46,6 +46,9 @@ public class RegisterActivity extends Activity {
         et_name = (EditText) findViewById(R.id.et_name);
         et_password = (EditText) findViewById(R.id.et_password);
         et_nicheng = (EditText) findViewById(R.id.et_nicheng);
+        et_erjixueyuan = (EditText) findViewById(R.id.et_erjixueyuan);
+        et_zhuanye = (EditText) findViewById(R.id.et_zhuanye);
+        et_repassword = (EditText) findViewById(R.id.et_repassword);
 
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +60,8 @@ public class RegisterActivity extends Activity {
                     bean.setName(et_nicheng.getText().toString().trim());
                     bean.setUsername(et_name.getText().toString().trim());
                     bean.setPassword(et_password.getText().toString().trim());
+                    bean.setXueyuan(et_erjixueyuan.getText().toString().trim());
+                    bean.setZhuanye(et_zhuanye.getText().toString().trim());
                     bean.signUp(RegisterActivity.this, new SaveListener() {
                         @Override
                         public void onSuccess() {

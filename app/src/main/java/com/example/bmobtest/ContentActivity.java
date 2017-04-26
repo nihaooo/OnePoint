@@ -68,6 +68,11 @@ public class ContentActivity extends BaseActivity {
                         //baidu Map
                         Intent intent2 = new Intent(ContentActivity.this, MapActivity.class);
                         startActivity(intent2);
+                        break;
+                    case R.id.nav_School:
+                        Intent intent3 = new Intent(ContentActivity.this,WebViewActivity.class);
+                        startActivity(intent3);
+                        break;
                     case R.id.nav_Settings:
                         //语句3
                         break;
@@ -92,9 +97,13 @@ public class ContentActivity extends BaseActivity {
         //                .load(R.drawable.back_img3)
         //                .into(imageView);
         TextView studentid = (TextView) view.findViewById(R.id.studentid);
+        TextView xueyuan = (TextView) view.findViewById(R.id.head_erjixueyuan);
+        TextView zhuanye = (TextView) view.findViewById(R.id.head_zhuanye);
         Bean user = BmobUser.getCurrentUser(ContentActivity.this, Bean.class);
         username.setText(user.getUsername());
         studentid.setText(user.getName());
+        xueyuan.setText(user.getXueyuan());
+        zhuanye.setText(user.getZhuanye());
 
 
         mLostList = new ArrayList<>();//数据源

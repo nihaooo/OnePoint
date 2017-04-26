@@ -10,6 +10,8 @@ public class Bean extends BmobUser {
     private String name;
     private int studentid;
     private int pass;
+    private String xueyuan;
+    private String zhuanye;
 
     public String getName() {
         return name;
@@ -33,5 +35,21 @@ public class Bean extends BmobUser {
 
     public void setPass(int pass) {
         this.pass = pass;
+    }
+
+    public String getXueyuan() {
+        return xueyuan;
+    }
+
+    public void setXueyuan(String xueyuan) {
+        this.xueyuan = xueyuan;
+    }
+
+    public String getZhuanye() {
+        return zhuanye;
+    }
+
+    public void setZhuanye(String zhuanye) {
+        this.zhuanye = zhuanye;
     }
 }

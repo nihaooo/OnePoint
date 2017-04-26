@@ -18,7 +18,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/studentid"
@@ -32,6 +33,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2015022044"
+            android:textColor="#FFF"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/head_erjixueyuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电子信息工程"
+            android:textColor="#FFF"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/head_zhuanye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="计算机科学与技术"
             android:textColor="#FFF"
             android:textSize="14sp"/>
     </LinearLayout>

@@ -4,11 +4,15 @@
     <string name="splash_slogin">便捷校园生活</string>
     <string name="hint_name">学号</string>
     <string name="name">姓名</string>
+    <string name="xueyuan">学院</string>
+    <string name="erjixueyuan">学院</string>
+    <string name="zhuanye">专业</string>
     <string name="classname">班级</string>
     <string name="hint_password">密码</string>
-    <string name="resign_in_button">Register</string>
+    <string name="repassword">请再次输入密码</string>
+    <string name="resign_in_button">注册</string>
     <string name="prompt_id">学号</string>
     <string name="prompt_password">密码</string>
-    <string name="sign_in_button">Sign In</string>
+    <string name="sign_in_button">登录</string>
 
 </resources>

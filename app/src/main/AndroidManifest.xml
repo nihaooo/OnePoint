@@ -50,6 +50,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".GuideActivity"></activity>
         <activity android:name=".MapActivity"></activity>
+        <activity android:name=".WebViewActivity"></activity>
 
         <service android:name="com.baidu.location.f" android:enabled="true"
                  android:process=":remote">
