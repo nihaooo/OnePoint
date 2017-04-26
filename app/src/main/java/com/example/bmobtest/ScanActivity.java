@@ -73,6 +73,9 @@ public class ScanActivity extends AppCompatActivity {
             QRBean qrBean = new QRBean();
             qrBean.setStudentclass(result);
             qrBean.setStudentid(user.getUsername());
+            qrBean.setXueyuan(user.getXueyuan());
+            qrBean.setZhuanye(user.getZhuanye());
+            qrBean.setStuname(user.getName());
             qrBean.save(ScanActivity.this, new SaveListener() {
                 @Override
                 public void onSuccess() {
